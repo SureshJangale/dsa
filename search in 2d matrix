@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) 
+    {      
+        if(matrix.size() == 0) return false;
+        int n = matrix.size();
+        int m = matrix[0].size();
+        
+        int start = 0, end = (n * m -1);
+        
+        while(start <= end)
+        {
+            int mid = (start + (end - start)/2);
+            if(matrix[mid/m][mid%m] == target)
+                return true;
+            if(matrix[mid/m][mid%m] < target) start = mid + 1;
+            else end = mid - 1;
+        }
+        return false;
+    }
+    
+//     bool binarySearch(vector<vector<int>> &matrix, int row, int start, int end, int target)
+//     {
+//         while (start <= end && start >= 0 && end >= 0 && row < matrix.size())
+//         {
+//             int mid = (start + end) / 2;
+
+//             // Element found
+//             if (matrix[row][mid] == target)
+//             {
+//                 return true;
+//             }
+
+//             else if (matrix[row][mid] > target)
+//                 end = mid - 1;
+//             else
+//                 start = mid + 1;
+//         }
+//         return false;
+//     }
+};
